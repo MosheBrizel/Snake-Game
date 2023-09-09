@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=EB+Garamond:wght@600&family=Noto+Serif+Hebrew:wght@400;500&family=Pacifico&family=Qwitcher+Grypen:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div class="settings-snake">
+        <div class="box-option">
+          <label for="speed">speed</label>
+          <select id="speed" >
+            <option value="250">speed 250</option>
+            <option value="200">speed 200</option>
+            <option value="150">speed 150</option>
+            <option value="100">speed 100</option>
+            <option value="80">speed 80</option>
+            <option value="50">speed 50</option>
+          </select>
+        </div>
+        <div class="box-option">
+          <label for="color">color</label>
+          
+          <input type="color" id="color" />
+        </div>
+        <button class="button-start">start pley</button>
+      </div>
+      <div class="main-snake">
+        <div class="snake"></div>
+        <div class="food"></div>
+      </div>
+      <div class="num-food">eating counter <p id="counter-eat">0</p></div>
+    </div>
+    
+    <script src="./main.js"></script>
+  </body>
+</html>

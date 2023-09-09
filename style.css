@@ -1,0 +1,109 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background: rgb(15, 143, 222);
+  background: linear-gradient(
+    180deg,
+    rgba(9, 40, 121, 1) 10%,
+    rgba(14, 31, 208, 1) 45%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+.main {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.box-option {
+  border: 4px solid;
+  margin: 5px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 93%;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.button-start {
+  font-family: "Black Ops One", cursive;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.settings-snake,.num-food {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(52, 141, 230, 0.612);
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  font-family: "Black Ops One", cursive;
+  align-items: center;
+  font-size: 10vh;
+  border-radius: 10px;
+
+  border: 5px solid rgba(19, 113, 220, 0.635);
+}
+.num-food{
+    font-size: 5vh;
+}
+.zise-snake {
+  display: inline;
+  background-color: rgb(6, 6, 6);
+  width: 10px;
+  height: 10px;
+}
+.main-snake {
+  background-color: rgb(10, 234, 234);
+  background-size: cover;
+  min-width: 500px;
+  min-height: 500px;
+  background-position: center;
+  border: 5px solid rgb(126, 125, 125);
+  position: relative;
+}
+.game-over {
+  background-color: rgba(245, 68, 4, 0.468);
+  padding: 20px;
+  border-radius: 10px;
+  border: 5px solid rgba(128, 128, 128, 0.507);
+  text-align: center;
+  position: absolute;
+  color: rgba(113, 74, 3, 0.648);
+  font-family: "Courier New", Courier, monospace;
+}
+.play-again {
+  width: 100px;
+  height: 50px;
+  background-color: rgb(12, 170, 12);
+  border-radius: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.game {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  position: absolute;
+}
+.food {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  position: absolute;
+  border-radius: 50px;
+}
+#id1 {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
