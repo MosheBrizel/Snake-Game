@@ -1,4 +1,3 @@
-
 // Puts all the elements of the HTML page into variables.
 let snake = document.querySelector(".snake");
 let divFood = document.querySelector(".food");
@@ -7,6 +6,7 @@ let buttonStart = document.querySelector(".button-start");
 let selectSpeed = document.getElementById("speed");
 let inputColorSnake = document.getElementById("color");
 let pCounterEat = document.getElementById("counter-eat");
+let timeGame = document.querySelectorAll(".timer > p > samp");
 
 // Adds the option to click on buttons.
 document.addEventListener("keydown", listenerKeyDown);
@@ -47,14 +47,53 @@ let snakX = Math.floor(sizeBorderX / 2) + spaceBoardX + weithSnack;
 
 let gameOver = false;
 let intervalGame = null;
+let intervalTime = null;
 
 var key;
 let foodY;
 let foodX;
 
+let timer = [0, 0, 0];
+
 let snakeRundomColor = true;
 
 let listSnack = [divGame];
+
+// calculate time
+function calculateTime() {
+  let listChange = [2];
+  if (timer[1] >= 60) {
+    timer[1] = 0;
+    timer[0]++;
+    listChange.push(0);
+    listChange.push(1);
+  }
+  if (timer[2] >= 100) {
+    timer[2] = 0;
+    timer[1]++;
+    if (!listChange.includes(1)) {
+      listChange.push(1);
+    }
+  }
+  return listChange;
+}
+
+//to show in tow numbers.
+function towNumber(time) {
+  if (time < 10) {
+    return "0" + time;
+  } else {
+    return time;
+  }
+}
+
+// show the time on the sceen.
+function updateTimer(timeToChage) {
+  for (let i = 0; i < timeToChage.length; i++) {
+    timeGame[timeToChage[i]].innerHTML = towNumber(timer[timeToChage[i]]);
+  }
+  timer[2]++;
+}
 
 // Changes the color and speed of the snake.
 function changeSettingsHandler() {
@@ -65,17 +104,19 @@ function changeSettingsHandler() {
   if (intervalGame != null) {
     clearInterval(intervalGame);
   }
+  if (intervalTime != null) {
+    clearInterval(intervalTime);
+  }
   startShowGame();
 }
 
 // set a rundom color.
-function randomColor(){
+function randomColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
 
-  let r = Math.floor(Math.random()* 256)
-  let g = Math.floor(Math.random()* 256)
-  let b = Math.floor(Math.random()* 256)
-
-  return "rgb(" + r + "," + g + "," + b + ")"
+  return "rgb(" + r + "," + g + "," + b + ")";
 }
 
 // Displays the snake screen and resets all variables.
@@ -114,13 +155,16 @@ function startShowGame() {
 
   gameOver = false;
   intervalGame = null;
+  intervalTime = null;
+
+  timer = [0, 0, 0];
 
   key = null;
   foodY = null;
   foodX = null;
 
   listSnack = [divGame];
-
+  updateTimer([0,1,2]);
   moveFood();
   addToTheSnake();
   listSnack[0].style.top = spaceBoardY + Math.floor(sizeBorderX / 2) + "px";
@@ -136,7 +180,15 @@ function divGameOver() {
   divOver = document.createElement("div");
   divOver.classList.add("game-over");
   h1Over = document.createElement("h1");
-  h1Over.innerHTML = "Disqualified<br>you eat " + counterEatFood;
+  h1Over.innerHTML =
+    "Disqualified<br>you eat " +
+    counterEatFood +
+    "<br>in time :<br>" +
+    towNumber(timer[0]) +
+    ":" +
+    towNumber(timer[1]) +
+    ":" +
+    towNumber(timer[2]);
   buttonOver = document.createElement("button");
   buttonOver.innerHTML = "play again";
   buttonOver.addEventListener("click", startShowGame);
@@ -191,7 +243,7 @@ function moveAllSnake() {
 // It is a function that is activated all the time and moves the head of the snake as the variables moveX,moveY.
 function moveSnake() {
   moveAllSnake();
-  if (snakeRundomColor == true){
+  if (snakeRundomColor == true) {
     colorAllSnake(randomColor());
   }
   snakX += moveX;
@@ -222,6 +274,9 @@ function moveSnake() {
 function directionSnake(key) {
   if (!startGame) {
     intervalGame = setInterval(moveSnake, speedSnake);
+    intervalTime = setInterval(() => {
+      updateTimer(calculateTime());
+    }, 10);
     startGame = true;
   }
   if (key === "ArrowDown") {
@@ -245,6 +300,7 @@ function directionSnake(key) {
   if (key === "a") {
     gameOver = false;
     clearInterval(intervalGame);
+    clearInterval(intervalTime);
   }
 }
 
@@ -264,6 +320,7 @@ function chackEatSnake() {
     ) {
       gameOver = false;
       clearInterval(intervalGame);
+      clearInterval(intervalTime);
       colorAllSnake("red");
       divGameOver();
     }
