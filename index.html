@@ -17,18 +17,19 @@
       <div class="settings-snake">
         <div class="box-option">
           <label for="speed">speed</label>
-          <select id="speed" >
+          <select id="speed">
             <option value="250">speed 250</option>
             <option value="200">speed 200</option>
             <option value="150">speed 150</option>
             <option value="100">speed 100</option>
             <option value="80">speed 80</option>
             <option value="50">speed 50</option>
+            <option value="25">speed 25</option>
           </select>
         </div>
         <div class="box-option">
           <label for="color">color</label>
-          
+
           <input type="color" id="color" />
         </div>
         <button class="button-start">start pley</button>
@@ -37,9 +38,18 @@
         <div class="snake"></div>
         <div class="food"></div>
       </div>
-      <div class="num-food">eating counter <p id="counter-eat">0</p></div>
+      <div class="contaner-in-game">
+        <div class="num-food box-option">
+          <h2>eating counter</h2>
+          <p id="counter-eat">0</p>
+        </div>
+        <div class="timer box-option">
+          <h2>time game</h2>
+          <p><samp>00</samp>:<samp>00</samp>:<samp>00</samp></p>
+        </div>
+      </div>
     </div>
-    
+
     <script src="./main.js"></script>
   </body>
 </html>
