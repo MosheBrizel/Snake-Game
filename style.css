@@ -36,14 +36,14 @@ body {
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
-.settings-snake,.num-food {
+.settings-snake,.contaner-in-game {
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   display: flex;
   justify-content: center;
   background-color: rgba(52, 141, 230, 0.612);
   flex-direction: column;
   text-align: center;
-  gap: 10px;
+  gap: 20px;
   font-family: "Black Ops One", cursive;
   align-items: center;
   font-size: 10vh;
@@ -51,9 +51,18 @@ body {
 
   border: 5px solid rgba(19, 113, 220, 0.635);
 }
-.num-food{
+.num-food,.timer{
     font-size: 5vh;
 }
+.num-food > p,.timer > p{
+  margin: 0;
+  font-size: 5vh;
+}
+.num-food > h2,.timer > h2{
+  margin: 0;
+}
+
+
 .zise-snake {
   display: inline;
   background-color: rgb(6, 6, 6);
